@@ -47,43 +47,42 @@ The analytical dashboard provides a holistic view of user feedback through the f
 *Note: Dashboard visuals are stored in the `screenshots/` directory.*
 
 ### Main Dashboard
-```md id="g4jlwm"
+
 ![Dashboard](screenshots/dashboard-1.png)
 ![Dashboard](screenshots/dashboard-2.png)
 ![Dashboard](screenshots/dashboard-3.png)
 ![Dashboard](screenshots/dashboard-4.png)
 ![Dashboard](screenshots/dashboard-5.png)
-```
+
 
 ### Sentiment Distribution Pie Chart
-```md id="g4jlwn"
+
 ![Pie Chart](screenshots/pie_chart.png)
-```
 
 ### Sentiment Trend Analysis
-```md id="g4jlwo"
+
 ![Trend Analysis](screenshots/trend_analysis.png)
-```
+
 
 ### Rating Distribution Histogram
-```md id="g4jlwp"
+
 ![Histogram](screenshots/histogram.png)
-```
+
 
 ### Rating vs Review Length
-```md id="g4jlwq"
+
 ![Scatter Plot](screenshots/scatter_plot.png)
-```
+
 
 ### KMeans Clustering
-```md id="g4jlwr"
+
 ![KMeans Clustering](screenshots/kmeans_clustering.png)
-```
+
 
 ### Theme Analysis (Word Clouds)
-```md id="g4jlws"
+
 ![Word Clouds](screenshots/word_clouds.png)
-```
+
 
 ## 🧠 ML Workflow
 
