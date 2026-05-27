@@ -48,7 +48,11 @@ The analytical dashboard provides a holistic view of user feedback through the f
 
 ### Main Dashboard
 ```md id="g4jlwm"
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard-1.png)
+![Dashboard](screenshots/dashboard-2.png)
+![Dashboard](screenshots/dashboard-3.png)
+![Dashboard](screenshots/dashboard-4.png)
+![Dashboard](screenshots/dashboard-5.png)
 ```
 
 ### Sentiment Distribution Pie Chart
