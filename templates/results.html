@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis Results</h1>
+
+        {% if single_prediction %}
+            <h2>Single Review Prediction:</h2>
+            <div class="prediction-item">
+                <p class="review">Review: {{ single_prediction.review }}</p>
+                <p>Sentiment: <span class="sentiment {{ single_prediction.sentiment }}">{{ single_prediction.sentiment }}</span></p>
+            </div>
+        {% elif predictions %}
+            <h2>Batch Predictions:</h2>
+            {% if plot_url %}
+                <div class="plot-container">
+                    <img src="data:image/png;base64,{{ plot_url }}" alt="Sentiment Distribution Pie Chart">
+                </div>
+            {% endif %}
+            <div class="predictions-list">
+                {% for p in predictions %}
+                    <div class="prediction-item">
+                        <p class="review">Review: {{ p.review }}</p>
+                        <p>Sentiment: <span class="sentiment {{ p.sentiment }}">{{ p.sentiment }}</span></p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No predictions to display.</p>
+        {% endif %}
+
+        <a href="/" class="back-button">Analyze Another Review</a>
+    </div>
+</body>
+</html>

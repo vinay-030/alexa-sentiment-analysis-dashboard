@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Alexa Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Amazon Alexa Sentiment Analysis</h1>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="/dashboard" style="display: inline-block; padding: 10px 20px; background-color: #48bb78; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">View Analytics Dashboard &rarr;</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <label for="review_text">Enter a review:</label>
+            <textarea id="review_text" name="review_text" rows="5" placeholder="e.g., I love my Alexa, it's so helpful!"></textarea>
+
+            <p class="or-separator"><span>OR</span></p>
+
+            <label for="file">Upload a CSV file of reviews:</label>
+            <p class="file-info">
+                Your CSV should have one column containing the reviews.
+                The app will process the first column if no specific header like 'verified_reviews' is found.
+            </p>
+            <input type="file" id="file" name="file" accept=".csv">
+
+            <input type="submit" value="Analyze Sentiment">
+        </form>
+    </div>
+</body>
+</html>

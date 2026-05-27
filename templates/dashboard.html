@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexa Sentiment Analytics</title>
+    <!-- Plotly CDN (Required for charts to render) -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+
+    <nav>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <h1>Alexa Sentiment Analytics</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <h2 class="section-title">Overview Metrics</h2>
+        
+        <!-- KPI Row -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <p class="kpi-title">Total Reviews</p>
+                <p class="kpi-value">{{ kpis.total }}</p>
+            </div>
+            <div class="kpi-card border-green">
+                <p class="kpi-title">Positive</p>
+                <p class="kpi-value text-green">{{ kpis.positive }}</p>
+            </div>
+            <div class="kpi-card border-yellow">
+                <p class="kpi-title">Neutral</p>
+                <p class="kpi-value text-yellow">{{ kpis.neutral }}</p>
+            </div>
+            <div class="kpi-card border-red">
+                <p class="kpi-title">Negative</p>
+                <p class="kpi-value text-red">{{ kpis.negative }}</p>
+            </div>
+            <div class="kpi-card border-blue">
+                <p class="kpi-title">Model Accuracy</p>
+                <p class="kpi-value text-blue">{{ kpis.accuracy }}%</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Interactive Analysis</h2>
+        
+        <!-- Interactive Charts Row 1 -->
+        <div class="chart-grid">
+            <div class="chart-card">
+                <h3>Sentiment Distribution</h3>
+                {{ pie_chart|safe }}
+            </div>
+            <div class="chart-card">
+                <h3>Sentiment Trend Over Time</h3>
+                {{ trend_chart|safe }}
+            </div>
+        </div>
+
+        <!-- Interactive Charts Row 2 -->
+        <div class="chart-grid">
+            <div class="chart-card">
+                <h3>Rating Distribution</h3>
+                {{ histogram_chart|safe }}
+            </div>
+            <div class="chart-card">
+                <h3>Rating vs Review Length</h3>
+                {{ scatter_chart|safe }}
+            </div>
+        </div>
+
+        <!-- KMeans -->
+        <div class="chart-grid" style="grid-template-columns: 1fr;">
+            <div class="chart-card">
+                <h3>Clustering Analysis</h3>
+                {{ kmeans_chart|safe }}
+            </div>
+        </div>
+
+        <h2 class="section-title">Topic Extraction</h2>
+        
+        <!-- Static Images Row 1 -->
+        <div class="img-grid">
+            <div class="img-container">
+                <h3 class="text-green">Positive Sentiment</h3>
+                <img src="{{ url_for('static', filename='visualizations/wordcloud_positive.png') }}" alt="Positive Word Cloud">
+            </div>
+            <div class="img-container">
+                <h3 class="text-yellow">Neutral Sentiment</h3>
+                <img src="{{ url_for('static', filename='visualizations/wordcloud_neutral.png') }}" alt="Neutral Word Cloud">
+            </div>
+            <div class="img-container">
+                <h3 class="text-red">Negative Sentiment</h3>
+                <img src="{{ url_for('static', filename='visualizations/wordcloud_negative.png') }}" alt="Negative Word Cloud">
+            </div>
+        </div>
+
+        <h2 class="section-title">Model Diagnostics</h2>
+        
+        <!-- Static Images Row 2 -->
+        <div class="img-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+            <div class="img-container">
+                <h3>Confusion Matrix</h3>
+                <img src="{{ url_for('static', filename='visualizations/confusion_matrix.png') }}" alt="Confusion Matrix">
+            </div>
+            <div class="img-container">
+                <h3>Correlation Matrix</h3>
+                <img src="{{ url_for('static', filename='visualizations/correlation_matrix.png') }}" alt="Correlation Matrix">
+            </div>
+        </div>
+
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Alexa Sentiment Analytics Platform. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
